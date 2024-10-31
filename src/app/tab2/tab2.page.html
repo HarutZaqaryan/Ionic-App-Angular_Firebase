@@ -1,17 +1,76 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Favorites</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  @if (!favorites) {
+  <div>
+    <ion-card>
+      <ion-skeleton-text
+        animated="true"
+        class="skeleton-image"
+      ></ion-skeleton-text>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <ion-card-header>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-skeleton-text
+        animated="true"
+        class="skeleton-image"
+      ></ion-skeleton-text>
+
+      <ion-card-header>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-skeleton-text
+        animated="true"
+        class="skeleton-image"
+      ></ion-skeleton-text>
+
+      <ion-card-header>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+      <ion-skeleton-text
+        animated="true"
+        class="skeleton-image"
+      ></ion-skeleton-text>
+
+      <ion-card-header>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+        <ion-skeleton-text animated="true"></ion-skeleton-text>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  } @else { @for (favorite of favorites; track $index) {
+
+  <ion-card button [routerLink]="['./activity-details',favorite.favorite.id]">
+    <ion-img [src]="favorite.favorite.cropped" alt="Image"> </ion-img>
+
+    <ion-fab vertical="top" horizontal="end">
+      <ion-fab-button (click)="removeFromFavorites(favorite.favorite.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+
+    <ion-card-header>
+      <ion-card-title style="display: flex; justify-content: space-around">
+        {{favorite.favorite.name}}
+      </ion-card-title>
+    </ion-card-header>
+
+
+  </ion-card>
+  }}
 </ion-content>

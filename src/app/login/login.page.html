@@ -1,0 +1,55 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="loginFormGroup">
+        <ion-item lines="none">
+          <ion-input
+            label="Email"
+            label-placement="floating"
+            fill="outline"
+            placeholder="Enter your Email"
+            [clearInput]="true"
+            style="margin-top: 10px"
+            formControlName="email"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input
+            type="password"
+            label="Password"
+            label-placement="floating"
+            fill="outline"
+            [clearInput]="true"
+            placeholder="Enter your password"
+            style="margin-top: 10px"
+            formControlName="password"
+          ></ion-input>
+        </ion-item>
+
+        <ion-button
+          (click)="login()"
+          [disabled]="loginFormGroup.invalid"
+          expand="full"
+          style="color: #fff; margin-top: 20px"
+          >Sign In</ion-button
+        >
+      </form>
+      <p style="text-align: center; margin-top: 10px">
+        Have not registered yet?
+        <span
+          [routerLink]="['/signup']"
+          routerLinkActive="router-link-active"
+          style="color: rgb(64, 141, 248); cursor: pointer"
+        >
+          Sign Up
+        </span>
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
